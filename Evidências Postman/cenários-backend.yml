@@ -5,24 +5,29 @@ Funcionalidade: Gerenciamento de usuários
   Cenário: Excluir usuário não existente da base de dados
     Dado que eu possuo o ID de um usuário não cadastrado
     Quando eu tentar excluir o usuário
-    Então o sistema deve avisar "usuário não encontrado"
+    Então a requisição deve falhar com o código 400
+    E o sistema deve avisar "Usuário não encontrado"
 
   Cenário: Excluir usuário com carrinho ativo
-    Dado que eu possua o id de um usuário com carrinho ativo
+    Dado que eu possuo o ID de um usuário com carrinho ativo
     Quando eu tentar excluir o usuário
-    Então o sistema deve avisar que "Não é permitido excluir usuário com carrinho cadastrado"
+    Então a requisição deve falhar com o código 400
+    E o sistema deve avisar "Não é permitido excluir usuário com carrinho cadastrado"
 
-  Cenário: Acessar informação de usuário não existente
-    Dado que eu possuo o id de um usuário não existente
-    Quando eu tentar pegar as inforamção do usuário
-    Então o sistema deve avisar "Usuário não encontrado"
+  Cenário: Acessar informações de usuário não existente
+    Dado que eu possuo o ID de um usuário não cadastrado
+    Quando eu buscar pelas informações do usuário
+    Então a requisição deve falhar com o código 400
+    E o sistema deve avisar "Usuário não encontrado"
 
-  Cenário: Acessar informação de usuário existente
-    Dado que eu possuo o id de um usuário existente
-    Quando eu tentar pegar as informação do usuário
-    Então o sistema deve me retornar as informações do usuário
+  Cenário: Acessar informações de usuário existente
+    Dado que eu possuo o ID de um usuário cadastrado
+    Quando eu buscar pelas informações do usuário
+    Então a requisição deve responder com o código 200
+    E deve retornar os dados do usuário com sucesso
 
-  Cenário: Informar email já em uso para cadastrar usuário
-    Dado que eu tenho um email já em uso no sistema
-    Quando eu tento usar esse email para cadastrar um novo usuário
-    Então o sistema deve informar que o email já está em uso
+  Cenário: Cadastrar usuário com e-mail já em uso
+    Dado que eu possuo os dados de um novo usuário com um e-mail já cadastrado
+    Quando eu tentar cadastrar o usuário
+    Então a requisição deve falhar com o código 400
+    E o sistema deve avisar "Este email já está sendo usado"
