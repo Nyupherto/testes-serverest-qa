@@ -24,3 +24,13 @@ Funcionalidade: Gerenciamento de usuários
         "idCarrinho": "qbMqntef4iTOWwfg"
       }
       """
+  Cenário: Acessar informção de usuário não existente
+    Dado que eu possuo o id de um usuário não existente
+    Quando eu tentar pegar as informção do usuário
+    Então o sistema deve avisar "Usuário não encontrado"
+    E deve retornar o seguinte JSON:
+    """
+    {
+    "message": "Usuário não encontrado"
+    }
+    """
