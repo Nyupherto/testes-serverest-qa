@@ -1,0 +1,26 @@
+# language: pt
+
+Funcionalidade: Gerenciamento de usuários
+
+  Cenário: Excluir usuário não existente da base de dados
+    Dado que eu possuo o ID de um usuário não cadastrado
+    Quando eu tentar excluir o usuário
+    Então o sistema deve avisar "usuário não encontrado"
+    E deve retornar o seguinte JSON de resposta:
+      """
+      {
+        "message": "Usuário não encontrado"
+      }
+      """
+
+  Cenário: Excluir usuário com carrinho ativo
+    Dado que eu possua o id de um usuário com carrinho ativo
+    Quando eu tentar excluir o usuário
+    Então o sistema deve avisar que "Não é permitido excluir usuário com carrinho cadastrado"
+    E deve retornar o seguinte JSON de resposta:
+      """
+      {
+        "message": "Não é permitido excluir usuário com carrinho cadastrado",
+        "idCarrinho": "qbMqntef4iTOWwfg"
+      }
+      """
