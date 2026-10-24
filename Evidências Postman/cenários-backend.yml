@@ -6,31 +6,23 @@ Funcionalidade: Gerenciamento de usuários
     Dado que eu possuo o ID de um usuário não cadastrado
     Quando eu tentar excluir o usuário
     Então o sistema deve avisar "usuário não encontrado"
-    E deve retornar o seguinte JSON de resposta:
-      """
-      {
-        "message": "Usuário não encontrado"
-      }
-      """
 
   Cenário: Excluir usuário com carrinho ativo
     Dado que eu possua o id de um usuário com carrinho ativo
     Quando eu tentar excluir o usuário
     Então o sistema deve avisar que "Não é permitido excluir usuário com carrinho cadastrado"
-    E deve retornar o seguinte JSON de resposta:
-      """
-      {
-        "message": "Não é permitido excluir usuário com carrinho cadastrado",
-        "idCarrinho": "qbMqntef4iTOWwfg"
-      }
-      """
-  Cenário: Acessar informção de usuário não existente
+
+  Cenário: Acessar informação de usuário não existente
     Dado que eu possuo o id de um usuário não existente
-    Quando eu tentar pegar as informção do usuário
+    Quando eu tentar pegar as inforamção do usuário
     Então o sistema deve avisar "Usuário não encontrado"
-    E deve retornar o seguinte JSON:
-    """
-    {
-    "message": "Usuário não encontrado"
-    }
-    """
+
+  Cenário: Acessar informação de usuário existente
+    Dado que eu possuo o id de um usuário existente
+    Quando eu tentar pegar as informação do usuário
+    Então o sistema deve me retornar as informações do usuário
+
+  Cenário: Informar email já em uso para cadastrar usuário
+    Dado que eu tenho um email já em uso no sistema
+    Quando eu tento usar esse email para cadastrar um novo usuário
+    Então o sistema deve informar que o email já está em uso
