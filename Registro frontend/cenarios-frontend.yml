@@ -1,0 +1,30 @@
+# language: pt
+
+Funcionalidade: Cadastro e login de usuário para compra
+
+  Cenário: Cadastro de um novo usuário com sucesso
+    Dado que eu possuo um e-mail válido que não foi cadastrado
+    Quando eu preencher os dados de cadastro e confirmar
+    Então o sistema deve exibir a mensagem "Cadastro realizado com sucesso"
+    E eu devo ser redirecionado para a tela inicial da minha conta
+  
+  Cenário: Tentar realizar cadastro com e-mail já em uso 
+    Dado que eu possuo um e-mail que já está cadastrado no sistema
+    Quando eu preencher os dados de cadastro e confirmar
+    Então o sistema deve exibir a mensagem "Este email já está sendo usado"
+  
+  Cenário: Realizar login com sucesso
+    Dado que eu possuo uma conta ativa e cadastrada
+    Quando eu preencher minhas credenciais de acesso e confirmar
+    Então eu devo ser autenticado e direcionado para a tela inicial da minha conta
+
+  Cenário: Tentar realizar login com credenciais inválidas
+    Dado que eu informo credenciais de acesso incorretas
+    Quando eu preencher os dados de login e confirmar
+    Então o sistema deve exibir a mensagem "E-mail e/ou senha inválidos"
+
+  Cenário: Adicionar produto ao carrinho com sucesso
+    Dado que eu esteja autenticado na minha conta
+    Quando eu adicionar um produto disponível ao carrinho
+    Então o sistema deve me direcionar para a tela do carrinho de compras
+    E deve exibir o produto adicionado com o seu respectivo valor
