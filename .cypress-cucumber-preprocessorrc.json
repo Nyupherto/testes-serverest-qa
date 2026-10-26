@@ -1,0 +1,7 @@
+{
+  "stepDefinitions": [
+    "cypress/e2e/backend/**/*.{js,ts}",
+    "cypress/e2e/frontend/**/*.{js,ts}"
+  ],
+  "nonGlobalStepDefinitions": true
+}
